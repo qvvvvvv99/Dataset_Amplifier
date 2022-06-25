@@ -5,7 +5,8 @@ const fileUpload = require('express-fileupload')
 const app = new express();
 const ejs = require('ejs');
 
-const homeController = require('./controllers/home');
+const mainController = require('./controllers/main');
+const searchController = require('./controllers/home');
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -22,4 +23,5 @@ mongoose.connect('mongodb+srv://qvvvvvv:kse657544@cluster0.cetk1.mongodb.net/tes
     useUnifiedTopology: true
 })
 
-app.get('/', homeController);
+app.get('/', mainController);
+// app.get('/', searchController);

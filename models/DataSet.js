@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const BlogPostSchema = new Schema({
+const DataSetSchema = new Schema({
     title: String,
     image: String,
     label: String
 });
 
-const Blogpost = mongoose.model('BlogPost', BlogPostSchema);
+const Dataset = mongoose.model('DataSet', DataSetSchema);
 
-module.exports = Blogpost;
+module.exports = Dataset;

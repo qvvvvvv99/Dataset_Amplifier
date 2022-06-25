@@ -1,9 +1,9 @@
-const BlogPost = require('../models/BlogPost.js')
+const DataSet = require('../models/DataSet.js')
 
 module.exports = async(req, res) =>{
-   const blogposts = await BlogPost.find({})
+   const datasets = await DataSet.find({})
    console.log(req.session)
    res.render('index', {
-      blogposts
+      datasets
    });
 }
