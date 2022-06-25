@@ -5,7 +5,7 @@ let imgFile, labFile;
 function loadImgFile(input) {
     imgFile = input.files[0];
 
-    imgName.textContent = imgFile.name;
+    imgName.value = imgFile.name;
     var newImage = document.getElementById("preview-image");
     newImage.src = URL.createObjectURL(imgFile);
 
@@ -15,7 +15,7 @@ function loadImgFile(input) {
 function loadLabFile(input){
     labFile = input.files[0];
 
-    labName.textContent = labFile.name;
+    labName.value = labFile.name;
 }
 
 function labelingImg(){
@@ -79,9 +79,11 @@ function checkDisable(checkbox)
     let text = document.getElementById('DSname');
     if(checkbox.checked == true ){
         text.disabled = false;
+        upload = 1;
 	} else 
 	{
         text.disabled = true;
+        upload = 0;
 	}
 }
 

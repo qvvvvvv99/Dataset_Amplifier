@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <%- include('layouts/head'); -%>
 <body>
     <%- include('layouts/header'); -%>
@@ -14,7 +14,7 @@
         </section>
         <div class="container" id="link">
             <div class="background">
-                <form method="post" enctype="multipart/form-data" id="amplifier">
+                <form action="data/store" method="post" enctype="multipart/form-data" id="amplifier">
                     <div class="tag">
                         <label id="shareDS"><input type="checkbox" id="amdit" onclick="checkDisable(this)">데이터셋 공유에 동의 하시겠습니까?</label>
                         <input type="text" id="DSname" disabled="false" placeholder="데이터셋 이름 작성">
@@ -30,8 +30,8 @@
 
                         <div class="fileContainer">
                             <div class="fileInput">
-                                <p>IMAGE FILE NAME : </p>
-                                <p id="imgfileName"></p>
+                                <label>IMAGE FILE NAME : </label>
+                                <input type="text" id="imgfileName" name="imgfileName"/>
                             </div>
                         </div>
                     </div>
@@ -46,12 +46,12 @@
 
                     <div class="fileContainer">
                         <div class="fileInput">
-                            <p>LABEL FILE NAME : </p>
-                            <p id="labfileName"></p>
+                            <label>LABEL FILE NAME : </label>
+                            <input type="text" id="labfileName" name="labfileName"/>
                         </div>
                     </div>
                     <div class="wrapper">
-                        <input type="button" class="buttonContainer" value="데이터셋 증폭하기" onclick="labelingImg()">
+                        <input type="submit" class="buttonContainer" value="데이터셋 증폭하기">
                     </div>
                 </form>
                 <div class='v-line'></div>

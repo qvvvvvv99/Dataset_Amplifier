@@ -7,6 +7,8 @@ const ejs = require('ejs');
 
 const mainController = require('./controllers/main');
 const searchController = require('./controllers/home');
+const validateMiddleware = require('./middleware/validationMiddleware');
+const storeDataController = require('./controllers/storeData');
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -18,10 +20,13 @@ app.listen(4000, () => {
    console.log('App listening on port 4000');
 });
 
-mongoose.connect('mongodb+srv://qvvvvvv:kse657544@cluster0.cetk1.mongodb.net/test', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+mongoose.connect('mongodb://127.0.0.1/my_db', {
+    useNewUrlParser: true
 })
+
+global.upload = null;
 
 app.get('/', mainController);
 // app.get('/', searchController);
+app.use('/data/store', validateMiddleware);
+app.post('/data/store', storeDataController);
