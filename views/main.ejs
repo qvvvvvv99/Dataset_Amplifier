@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Labeling</title>
+   <link rel="stylesheet" href="./styles/styles.css">
+   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+   <link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet"
+	href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500&family=Gloria+Hallelujah&family=Noto+Sans+KR:wght@500&display=swap');
+    </style>
+</head>
+<body>
+    <%- include('layouts/header'); -%>
+    <main>
+        <section id="mainWindow">
+            <img id="bg1" src="https://static.wixstatic.com/media/45d10e_cbb051ec97bc4427a44a66d0f9a8147e~mv2.gif" alt style="width: 69px; height: 60px; object-fit: contain;">
+            <div>
+                <h1>Automatic labeling<br> of<br> YOLO amplified datasets</h1>
+                <a href="#link">Let's take an amplify</a>
+            </div>
+            <img id="bg2" src="https://static.wixstatic.com/media/45d10e_74dd03e6ebde46ad8d20a9c8b222f870~mv2.gif" alt style="width: 68px; height: 68px; object-fit: contain;">
+        </section>
+        <div class="container" id="link">
+            <div class="background">
+                <form method="post" enctype="multipart/form-data" id="amplifier">
+                    <div class="tag">
+                        <label id="shareDS"><input type="checkbox" id="amdit" onclick="checkDisable(this)">데이터셋 공유에 동의 하시겠습니까?</label>
+                        <input type="text" id="DSname" disabled="false" placeholder="데이터셋 이름 작성">
+                    </div>
+                    <div class="image-upload" id="image-upload">
+                        <img id="preview-image" src="https://dummyimage.com/500x500/ffffff/000000.png&text=preview+image">
+                        <div class="btn">
+                            <label for="chooseImgFile" id="btnChooseImgFile">
+                            이미지 파일 선택(.jpg)
+                            </label>
+                        </div>
+                        <input type="file" id="chooseImgFile" name="chooseImgFile" accept=".jpg" onchange="loadImgFile(this)">
+
+                        <div class="fileContainer">
+                            <div class="fileInput">
+                                <p>IMAGE FILE NAME : </p>
+                                <p id="imgfileName"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="label-upload" id="label-upload">
+                        <div class="btn">
+                        <label for="chooseLabFile" id="btnChooseLabFile">
+                        라벨링 파일 선택(.txt)
+                        </label>
+                        </div>
+                        <input type="file" id="chooseLabFile" name="chooseLabFile" accept=".txt" onchange="loadLabFile(this)">
+                    </div>
+
+                    <div class="fileContainer">
+                        <div class="fileInput">
+                            <p>LABEL FILE NAME : </p>
+                            <p id="labfileName"></p>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <input type="button" class="buttonContainer" value="데이터셋 증폭하기" onclick="labelingImg()">
+                    </div>
+                </form>
+                <div class='v-line'></div>
+                <div class="notion">
+                    <h4>1. 이미지 파일은 반드시 jpg 형식의 파일</h4>
+                    <h4>2. 라벨링 파일은 반드시 txt 형식의 파일</h4>
+                    <h4>3. 이미지 파일과 라벨링 파일 이름은 같아야 한다.</h4>
+                    <h4>(데이터셋 공유에 동의하신다면 체크해주세요)</h4>
+                    <h2>총 8개의 이미지와 <br>라벨링 파일이 만들어진다.</h2>
+                    <div id="wrapper2">
+                        <input type="button" class="downloadBtn" value="다운로드">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <%- include('layouts/footer'); -%>
+    <%- include('layouts/scripts'); -%>
+</body>
+</html>
