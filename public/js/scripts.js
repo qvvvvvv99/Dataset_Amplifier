@@ -79,11 +79,9 @@ function checkDisable(checkbox)
     let text = document.getElementById('DSname');
     if(checkbox.checked == true ){
         text.disabled = false;
-        upload = 1;
 	} else 
 	{
         text.disabled = true;
-        upload = 0;
 	}
 }
 

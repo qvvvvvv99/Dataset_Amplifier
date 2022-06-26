@@ -24,8 +24,6 @@ mongoose.connect('mongodb://127.0.0.1/my_db', {
     useNewUrlParser: true
 })
 
-global.upload = null;
-
 app.get('/', mainController);
 // app.get('/', searchController);
 app.use('/data/store', validateMiddleware);
