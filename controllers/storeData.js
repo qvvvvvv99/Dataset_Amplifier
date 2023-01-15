@@ -6,8 +6,8 @@ module.exports = async (req,res)=>{
    let label = req.files.chooseLabFile;
    let DSname = req.body.DSname;
 
-   global.imagePath = path.resolve(__dirname, '..', 'public/img', image.name);
-   global.labelPath = path.resolve(__dirname, '..', 'public/lab', label.name);
+   global.imagePath = path.resolve(__dirname, '..', 'public/dataset/images', image.name);
+   global.labelPath = path.resolve(__dirname, '..', 'public/dataset/labels', label.name);
 
    await DataSet.create({
       title: DSname,
@@ -15,8 +15,8 @@ module.exports = async (req,res)=>{
       label: '/lab/'+ label.name
    })
 
-   image.mv(path.resolve(__dirname, '..', 'public/img', image.name));
-   label.mv(path.resolve(__dirname, '..', 'public/lab', label.name));
+   image.mv(path.resolve(__dirname, '..', 'public/dataset/images', image.name));
+   label.mv(path.resolve(__dirname, '..', 'public/dataset/labels', label.name));
 
-   res.redirect('/')
+   res.redirect('/data/amplify')
 }

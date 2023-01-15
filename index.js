@@ -10,6 +10,7 @@ const searchController = require('./controllers/home');
 const validateMiddleware = require('./middleware/validationMiddleware');
 const storeDataController = require('./controllers/storeData');
 const amplifyData = require('./controllers/amplifyData');
+const zipFile = require('./controllers/zipFile');
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -30,3 +31,4 @@ app.get('/', mainController);
 app.use('/data/store', validateMiddleware);
 app.post('/data/store', storeDataController);
 app.get('/data/amplify', amplifyData);
+app.get('/zip', zipFile);

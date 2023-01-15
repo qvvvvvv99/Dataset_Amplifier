@@ -3,10 +3,15 @@ const sharp = require('sharp')
 const fs = require('fs')
 
 module.exports = async (req,res)=>{
-   sharp(imagePath).rotate(180).toFile(imagePath.replace('.jpg', '_rot180.jpg'));  // 90도 회전
+   sharp(imagePath).rotate(180).toFile(imagePath.replace('.jpg', '_rot180.jpg'));  // 180도 회전
    sharp(imagePath).flip().toFile(imagePath.replace('.jpg', '_revUD.jpg'));  // 상하 뒤집기
    sharp(imagePath).flop().toFile(imagePath.replace('.jpg', '_revLR.jpg'));  // 좌우 뒤집기
-   sharp(imagePath).greyscale().toFile(imagePath.replace('.jpg', '_greyscale.jpg')); // 흑백
+   sharp(imagePath).greyscale().toFile(imagePath.replace('.jpg', '_greyscale.jpg'), (err, info) => {
+      let greyImg = imagePath.replace('.jpg', '_greyscale.jpg')
+      sharp(greyImg).rotate(180).toFile(greyImg.replace('.jpg', '_rot180.jpg'));  // 180도 회전
+      sharp(greyImg).flip().toFile(greyImg.replace('.jpg', '_revUD.jpg'));  // 상하 뒤집기
+      sharp(greyImg).flop().toFile(greyImg.replace('.jpg', '_revLR.jpg'));  // 좌우 뒤집기
+   });
 
    var data = fs.readFileSync(labelPath, 'utf-8');
    console.log(data);
@@ -65,5 +70,5 @@ module.exports = async (req,res)=>{
       }
    })
 
-   res.redirect('/')
+   res.redirect('/zip')
 }
